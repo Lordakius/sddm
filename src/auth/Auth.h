@@ -21,8 +21,9 @@
 #ifndef SDDM_AUTH_H
 #define SDDM_AUTH_H
 
-#include "AuthRequest.h"
+#include "AuthEnums.h"
 #include "AuthPrompt.h"
+#include "AuthRequest.h"
 
 #include <QtCore/QObject>
 #include <QtCore/QProcessEnvironment>
@@ -213,21 +214,21 @@ namespace SDDM {
         *
         * @param success true if every underlying task went fine
         */
-        void finished(Auth::HelperExitStatus status);
+        void finished(AuthEnums::HelperExitStatus status);
 
         /**
         * Emitted on error
         *
         * @param message message to be displayed to the user
         */
-        void error(QString message, Auth::Error type);
+        void error(QString message, AuthEnums::Error type, int result);
 
         /**
         * Information from the underlying stack is to be presented to the user
         *
         * @param message message to be displayed to the user
         */
-        void info(QString message, Auth::Info type);
+        void info(QString message, AuthEnums::Info type, int result);
 
     private:
         class Private;
